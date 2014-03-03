@@ -49,6 +49,8 @@ end
 
 alert = ""
 
+#below things that have the protected flag are when the auth will come up
+
 get "/" do
   @alert = alert
   erb :index, layout: :no_nav_layout
@@ -72,6 +74,14 @@ end
 get "/guestinfo" do
   @alert = alert
   erb :guestinfo
+end
+
+#admin prompt to edit things 
+#need to add admin.erb page that will have all the editing features on it
+get "/admin" do 
+  protected!('admin')
+  @alert = alert
+  erb :admin
 end
 
 get "/judge" do
